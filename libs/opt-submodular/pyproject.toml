@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "opt-submodular"
+version = "0.1.0"
+description = ""
+authors = ["mcordier <cordier.matthieu@bcg.com>"]
+readme = "README.md"
+packages = [{include = "opt_submodular", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.24.3"
+pydantic = "^1.10.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
