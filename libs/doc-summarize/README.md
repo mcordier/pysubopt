@@ -1,6 +1,6 @@
 # doc-summarize
 
-doc-summarize is a Python package that focuses on the task of text summarization. The goal of text summarization is to generate a concise summary that captures the most important information from one or more documents. This package is built upon various techniques, including submodular optimization, and is designed to provide efficient and effective summarization solutions.
+doc-summarize is a Python package that focuses on the task of text summarization. The goal of text summarization is to generate a concise summary that captures the most important information from one or more documents. This package is built upon ubmodular optimization, and is designed to provide summarization.
 
 ## Install
 
