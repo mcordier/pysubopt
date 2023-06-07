@@ -1,8 +1,17 @@
 # PySubOpt
 
-# 1. Setup
+Submodular optimization packages:
+- opt-submodular is the code library
+- doc-summarize allows to summarize texts using opt-submodular
+- opt-network allows to maximize network contamination using opt-submodular
 
-# 2. Quickstart
+## Setup
 
-# 3. Modules
-The repo is a mono-repo with three main libs:
+To install the packages you can run the following command:
+```bash
+    make setup
+```
+
+## Quickstart
+
+See each README of each lib to know more about the usage.
