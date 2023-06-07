@@ -28,7 +28,7 @@ We introduce first the following notations :
 
 Thus, we can formulate the problem as follow
 $$
-S^* \in \argmax_{S\subset V} f(S) \qquad \text{subject to} \quad c(S) \leq B
+S^\* \in argmax_{S\subset V} f(S) \qquad \text{subject to} \quad c(S) \leq B
 $$
 
 This problem is NP-hard and we are looking for some methods to compute near-optimal strategies.
