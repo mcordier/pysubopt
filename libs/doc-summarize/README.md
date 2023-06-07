@@ -35,8 +35,11 @@ $\begin{definition}{Document Summarization Optimization Problem}
 
 This problem is NP-hard and we are looking for some methods to compute near-optimal strategies.
 ### Submodular optimization
-    ### Definition
-        Let $V$ be a finite set, and denote by $2^V$ the power set of $V$, i.e., the family of all subsets of $V$. A function $f: 2^V \xrightarrow{} \mathbf{R}$ is called submodular if, for each $A,B \in 2^V$, we have: 
-        \begin{equation}
-            f(A) + f(B) \geq f(A\cap B) +f(A \cup B).
-        \end{equation}
+### Definition
+
+	Let $V$ be a finite set, and denote by $2^V$ the power set of $V$, i.e., the family of all subsets of $V$. A function $f: 2^V \xrightarrow{} \mathbf{R}$ is called submodular if, for each $A,B \in 2^V$, we have: 
+	$
+	\begin{equation}
+	    f(A) + f(B) \geq f(A\cap B) +f(A \cup B).
+	\end{equation}
+	$
