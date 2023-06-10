@@ -26,9 +26,9 @@ setup:		## Setup a dev environment
 	&& pre-commit install
 
 lint:		## Lint the code
-	. venv/bin/activate && black --preview --check .
-	. venv/bin/activate && flake8 .
-	. venv/bin/activate && pylint .
+	black --preview --check .
+	flake8 .
+	pylint .
 ##
 ## Targets
 ##

@@ -1,11 +1,17 @@
 import click
 
-from .dataset import import_dataset, build_contagion_model
-from .optimize import optimize_covdiv_greedy, optimize_expected_greedy, random_select
+from .dataset import build_contagion_model, import_dataset
+from .optimize import (
+    optimize_covdiv_greedy,
+    optimize_expected_greedy,
+    random_select,
+)
+
 
 @click.group()
 def cli():
     return None
+
 
 @cli.command(name="expected-greedy")
 @click.option(
@@ -68,10 +74,10 @@ def expected_greedy(
     n_iter: int,
     n_iter_opt: int,
     scaling_factor: float,
-    is_lazy: bool
+    is_lazy: bool,
 ):
     dataset = import_dataset(path)
-    parameters = {'beta' : 0.1, 'gamma': 0.05, 'T': n_time, 'N': n_iter}
+    parameters = {"beta": 0.1, "gamma": 0.05, "T": n_time, "N": n_iter}
     model = build_contagion_model(dataset, parameters)
     output = optimize_expected_greedy(
         dataset=dataset,
@@ -80,9 +86,10 @@ def expected_greedy(
         T=n_time,
         N=n_iter_opt,
         r=scaling_factor,
-        is_lazy=is_lazy
+        is_lazy=is_lazy,
     )
     print(output)
+
 
 @cli.command(name="covdiv-greedy")
 @click.option(
@@ -108,15 +115,15 @@ def expected_greedy(
     default=True,
     help="Use of lazy algorithm or not",
 )
-def covdiv_greedy(path: str, budget: float, scaling_factor: float, is_lazy: bool):
+def covdiv_greedy(
+    path: str, budget: float, scaling_factor: float, is_lazy: bool
+):
     dataset = import_dataset(path)
     output = optimize_covdiv_greedy(
-        dataset,
-        budget,
-        r=scaling_factor,
-        is_lazy=is_lazy
+        dataset, budget, r=scaling_factor, is_lazy=is_lazy
     )
     print(output)
+
 
 @cli.command(name="random")
 @click.option(

@@ -12,7 +12,7 @@ See the full setup process on the mono-repo instructions.
 A first example to illustrate the package:
 ```python
 from opt_submodular import GreedySubmodularOptimizer
-    
+
 def submod_func_obj(S: List[int]):
 	res = ...
 	return res

@@ -48,4 +48,3 @@ $$
 Submodular functions provide a mathematical foundation for capturing properties such as relevance and redundancy in the summary generation process.
 
 The doc-summarize package leverages submodular optimization techniques to maximize the sum of various submodular functions that represent different constraints, such as relevance and redundancy. A simple greedy algorithm is used to produce an approximately optimal summary based on this framework. The package also introduces a comparison with a more classical approach (MMR) using an accelerated modified greedy algorithm.
-
