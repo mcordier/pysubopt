@@ -79,12 +79,12 @@ def get_f_MMR(S: List[int], dataset: DocumentDataset, lambda_MMR: float = 4.0):
 
 
 def covdiv_F(
-    S: List[str], dataset: DocumentDataset, lambda_covdiv=4.0, alpha=0.6
+    S: List[int], dataset: DocumentDataset, lambda_covdiv=4.0, alpha=0.6
 ):
     """Coverage-diversity function for documment summarization.
 
     Args:
-        S (List[str]): List of index of sentences
+        S (List[int]): List of index of sentences
         dataset (DocumentDataset): DocumentDataset
         lambda_covdiv (float, optional): Weight of diversity in the function.
         alpha (float, optional): Alpha

@@ -1,3 +1,5 @@
+"""Module defining the GraphDataset used in this lib.
+"""
 from typing import Dict, List
 
 import ndlib.models.epidemics as ep
@@ -11,6 +13,11 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 class GraphDataset(BaseModel):
+
+    """GraphDataset class with useful attributes for the optimization
+    process.
+    """
+
     graph: nx.Graph
     dist: csr_matrix
     sim: np.ndarray
@@ -21,11 +28,26 @@ class GraphDataset(BaseModel):
         arbitrary_types_allowed = True
 
     @property
-    def V(self):
+    def V(self) -> List[int]:
+        """Property to get the "index" of the set of
+        nodes (isomorphism of the set to a numeral set)
+
+        Returns:
+            List[int]: Numeral set representing the index of the
+            nodes
+        """
         return list(self.graph.nodes)
 
 
 def import_dataset(path: str) -> GraphDataset:
+    """Import a graph dataset from a path.
+
+    Args:
+        path (str): Path of the graph.
+
+    Returns:
+        GraphDataset: GraphDataset for the specified path
+    """
     graph = nx.read_edgelist(path, create_using=nx.Graph())
     graph = nx.convert_node_labels_to_integers(graph)
     dists = nx.adjacency_matrix(graph)
@@ -41,7 +63,18 @@ def import_dataset(path: str) -> GraphDataset:
     )
 
 
-def build_contagion_model(dataset, parameters):
+def build_contagion_model(
+    dataset: GraphDataset, parameters: Dict[str, float]
+) -> ep.SIRModel:
+    """Build a contagion model based a graph dataset, and some contagion parameters.
+
+    Args:
+        dataset (GraphDataset): Graph dataset.
+        parameters (Dict[str, float]): Parameters for the contagion model.
+
+    Returns:
+        ep.SIRModel: Contagion model
+    """
     model = ep.SIRModel(dataset.graph)
     config = mc.Configuration()
     config.add_model_parameter("beta", parameters["beta"])
@@ -53,13 +86,15 @@ def build_contagion_model(dataset, parameters):
 
 def _get_cluster(graph, n_clusters=4):
     """
-    Compute a n clustering
+    Compute a n clustering on graph nodes based on the
+    adjency matrix.
+
     Args:
-        n_cluster (int) : number of cluster
+        graph (nx.Graph): Description
+        n_clusters (int, optional): Number of clusters
 
     Returns:
-        cluster (list) : list of the cluster index of each element
-
+        cluster (list): list of the cluster index of each element
     """
     adj_mat = nx.to_numpy_array(graph)
     sc = SpectralClustering(n_clusters, affinity="precomputed", n_init=100)
